@@ -1,4 +1,4 @@
-# OSKI - User testing application
+# OSKI - User testing application on MERN stack
 
 - User should to sign in into application.
 - User can only see and pass tests that have been assigned to him.
@@ -23,6 +23,6 @@
 - models: Mongoose;
 - authorization: Jsonwebtoken & Bcrypt;
 - validation: Joi;
-- [Swagger](https://app.swaggerhub.com/apis/UliaBojko/OSKI/1.0.0)
+- [Swagger](https://app.swaggerhub.com/apis-docs/UliaBojko/OSKI/1.0.0)
 
 <img src="./public/models.jpg" alt="models"/>
