@@ -33,11 +33,11 @@ export const sign = async (req, res) => {
       id: registeredUser._id,
     };
     const token = generateToken(payload);
-    const updated = await User.findByIdAndUpdate(registeredUser._id, { token }, { new: true });
+    await User.findByIdAndUpdate(registeredUser._id, { token }, { new: true });
     
     // GENERATE RESPONSE
     res.status(201).json({
-      data: updated
+      data: { token }
     });
   }
 };

@@ -6,7 +6,6 @@ export const auth = async (req, res, next) => {
   const [bearer, token] = authorization.split(" ");
   try {
     if (bearer !== 'Bearer') {
-      
       throw new Error("Not authorized"); 
     }
     const id = verifyToken(token);
