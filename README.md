@@ -6,7 +6,7 @@
 
 ## 1. Frontend
 
-- "npm start" runs the app in the development mode on [http://localhost:3000]
+- "npm start" runs the app in the development mode on [http://localhost:3000](http://localhost:3000)
 - framework: React;
 - requests: React-Query + Axios;
 - forms: Formik + Yup;
@@ -18,7 +18,7 @@
 
 ## 2. Backend
 
-- "npm run dev" runs the app in the development mode on [http://localhost:8080]
+- "npm run dev" runs the app in the development mode on [http://localhost:8080](http://localhost:8080)
 - database: MongoDB;
 - models: Mongoose;
 - authorization: Jsonwebtoken & Bcrypt;
@@ -26,5 +26,4 @@
 
 <img src="./public/models.jpg" alt="models"/>
 
-- Swagger documentation
-- Add ability to run application inside Docker container
+- [Swagger](https://app.swaggerhub.com/apis/UliaBojko/OSKI/1.0.0)

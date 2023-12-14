@@ -15,9 +15,9 @@ export const sign = async (req, res) => {
     if (compare) {
       const payload = { id: user._id,};
       const token = generateToken(payload);
-      const updated = await User.findByIdAndUpdate(user._id, { token }, { new: true });
+      await User.findByIdAndUpdate(user._id, { token }, { new: true });
       res.status(200).json({
-        data: updated
+        data: { token }
       });
     } else {
       res.status(401).json({
