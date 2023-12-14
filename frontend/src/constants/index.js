@@ -7,17 +7,15 @@ export const ROUTE_KEYS = {
 
 export const API_KEYS = {
   BASE_URL: "http://localhost:8080/oski",
-
   SIGN: "/auth/sign",
   LOGOUT: "/auth/logout",
   USER: "/user",
-
   ASSIGNED: "/quiz",
   QUIZ: "/quiz"
 };
 
 export const QUERY_KEYS = {
-  AUTH: "auth",
+  // AUTH: "auth",
   USER: "user",
   ASSIGNED: "assigned",
   QUIZ: "quiz"

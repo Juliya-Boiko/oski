@@ -1,5 +1,12 @@
-import { InputFieldLabel, InputFieldTitle, InputFieldWrapper, InputFieldIcon, InputFieldInput, InputFieldError } from './InputField.styled';
 import { MdOutlineAlternateEmail, MdOutlineLockOpen } from "react-icons/md";
+import {
+  InputFieldLabel,
+  InputFieldTitle,
+  InputFieldWrapper,
+  InputFieldIcon,
+  InputFieldInput,
+  InputFieldError
+} from './InputField.styled';
 
 export const InputField = ({ id, placeholder, errors, touched }) => (
   <InputFieldLabel htmlFor={id}>

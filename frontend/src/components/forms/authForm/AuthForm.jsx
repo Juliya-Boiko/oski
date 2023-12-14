@@ -5,8 +5,6 @@ import { InputField } from "../../inputs/inputField/InputField";
 import { AuthFormStyled } from "./AuthForm.styled";
 import { ButtonPrimary } from "../../buttons/buttonPrimary/ButtonPrimary";
 
-// { email: 'mmm@gmail.com', password: 'mmmmm' }
-
 export const AuthForm = () => {
   const sign = useSign();
 
@@ -28,7 +26,6 @@ export const AuthForm = () => {
             errors={errors.email}
             touched={touched.email}
           />
-          
           <InputField
             id="password"
             placeholder="password"

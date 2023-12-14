@@ -1,16 +1,20 @@
-import { Field } from "formik";
+import {
+  RadioGroupStyled,
+  RadioGroupLabel,
+  RadioGroupInput
+} from "./RadioGroup.styled";
 
 export const RadioGroup = ({ name, data }) => { 
   return (
-    <div>
+    <RadioGroupStyled>
       {data.map((el) => {
         return (
-          <label key={el}>
-            <Field type="radio" name={name} value={el} />
-            {el}
-          </label>
+          <RadioGroupLabel key={el}>
+            <RadioGroupInput type="radio" name={name} value={el} />
+            <span>{el}</span>
+          </RadioGroupLabel>
         )
       })}
-    </div>
+    </RadioGroupStyled>
   );
 };

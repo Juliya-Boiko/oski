@@ -1,4 +1,5 @@
+import { LogoStyled } from "./Logo.styled";
 
-export const Logo = () => (
-  <p>Logo</p>
+export const Logo = ({ size }) => (
+  <LogoStyled $size={size} />
 );

@@ -1,8 +1,13 @@
-import { HeaderStyled, HeaderWrapper, HeaderNav, HeaderLink } from "./Header.styled";
 import { ROUTE_KEYS } from "../../../constants";
 import { useLogout } from "../../../services/auth/useLogout";
 import { Logo } from "../../logo/Logo";
 import { ButtonSecondary } from "../../buttons/buttonSecondary/ButtonSecondary";
+import {
+  HeaderStyled,
+  HeaderWrapper,
+  HeaderNav,
+  HeaderLink
+} from "./Header.styled";
 
 export const Header = () => {
   const logout = useLogout();
@@ -10,7 +15,7 @@ export const Header = () => {
   return (
     <HeaderStyled>
       <HeaderWrapper>
-        <Logo />
+        <Logo size="36px" />
         <ButtonSecondary buttonType="button" label="Logout" onClick={logout} />
       </HeaderWrapper>
       <HeaderNav>

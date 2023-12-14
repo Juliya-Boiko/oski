@@ -1,40 +1,68 @@
 import { useState } from "react";
-import { Formik, Form } from "formik";
-import { RadioGroup } from "../../inputs/radioGroup/radioGroup";
-import { sendResults } from "../../../utils/axios";
+import { useParams } from "react-router-dom";
+import { useScore } from "../../../services/user/useScore";
+import { useQuiz } from "../../../services/quiz/useQuiz";
+import { Formik } from "formik";
+import { Loader } from "../../loaders/Loader";
+import { RadioGroup } from "../../inputs/radioGroup/RadioGroup";
+import { ButtonIcon } from "../../buttons/buttonIcon/ButtonIcon";
+import {
+  QuizFormStyled,
+  QuizFormName,
+  QuizFormCounter,
+  QuizFormLabel
+} from "./QuizForm.styled";
+import {
+  formatFormValues,
+  getLastIdx,
+  getQuestionsAmount,
+  getCurrentItem
+} from "../../../utils/helpers";
 
-export const QuizForm = ({ data, quizId }) => {
+export const QuizForm = () => {
   const [current, setCurrent] = useState(0);
-  const initialValues = data.reduce((acc, v) => ({ ...acc, [v._id]: ''}), {});
-  const lastElemIdx = data.length - 1;
-
-  console.log(quizId);
-
-  const submitHandler = (values) => {
-    sendResults({ quizId, values});
-  }
+  const { id: quizId } = useParams();
+  const { data } = useQuiz(quizId);
+  const postResult = useScore();
+  
+  const initialValues = formatFormValues(data);
+  const lastElemIdx = getLastIdx(data);
+  const totalAmount = getQuestionsAmount(data);
+  const question = getCurrentItem(data, current);
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={submitHandler}
+      onSubmit={(values) => postResult({ quizId, values })}
     >
-      {({ values, errors, touched, dirty, isValid }) => (
-        <Form>
-          <h6>{data[current].label}</h6>
-          <RadioGroup data={data[current].answers} name={data[current]._id} />
+      {({ values }) => (
+        <>
+          {data ? (
+            <QuizFormStyled>
+              <QuizFormName>{data.name}</QuizFormName>
+              <QuizFormCounter>Question: {current + 1} of {totalAmount}</QuizFormCounter>
+              <QuizFormLabel>{question.label}</QuizFormLabel>
+              <RadioGroup data={question.answers} name={question._id} />
 
-          {current !== lastElemIdx && (
-            <button
-              type="button"
-              disabled={values[data[current]._id] === ''}
-              onClick={() => setCurrent(prev => prev + 1)}
-            >
-              Next
-            </button>
+              {current !== lastElemIdx && (
+                <ButtonIcon
+                  label="Next"
+                  disabled={!values[question._id]}
+                  onClick={() => setCurrent(prev => prev + 1)}
+                />
+              )}
+              {current === lastElemIdx && (
+                <button
+                  type="submit"
+                  disabled={values[question._id] === ''}
+                >
+                  Submit
+                </button>
+              )}
+            </QuizFormStyled>) : (
+            <Loader />
           )}
-          {current === lastElemIdx && (<button type="submit" disabled={values[data[current]._id] === ''}>Submit</button>)}
-        </Form>
+        </>
       )}
     </Formik>
   );

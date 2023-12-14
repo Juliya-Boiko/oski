@@ -1,6 +1,6 @@
+import { QUERY_KEYS, ROUTE_KEYS } from '../../constants';
 import { useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { QUERY_KEYS, ROUTE_KEYS } from '../../constants';
 import { useCallback } from 'react';
 import { logoutUser } from '../../utils/axios';
 

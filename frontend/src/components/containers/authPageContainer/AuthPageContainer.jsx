@@ -1,4 +1,9 @@
-import { AuthPageContainerStyled, AuthPageContent, AuthPageTitle, AuthPageImage } from "./AuthPageContainer.styled";
+import {
+  AuthPageContainerStyled,
+  AuthPageContent,
+  AuthPageTitle,
+  AuthPageImage
+} from "./AuthPageContainer.styled";
 
 export const AuthPageContainer = ({ children }) => (
   <AuthPageContainerStyled>
@@ -6,7 +11,6 @@ export const AuthPageContainer = ({ children }) => (
       <AuthPageTitle>welcome!</AuthPageTitle>
       {children}
     </AuthPageContent>
-    
     <AuthPageImage />
   </AuthPageContainerStyled>
 );

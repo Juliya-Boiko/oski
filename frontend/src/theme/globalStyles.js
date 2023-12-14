@@ -26,7 +26,8 @@ export const GlobalStyles = createGlobalStyle`
   figcaption,
   blockquote,
   dl,
-  dd {
+  dd,
+  input {
     margin: 0;
     padding: 0;
   }

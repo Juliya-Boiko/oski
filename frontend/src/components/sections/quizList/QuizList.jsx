@@ -1,8 +1,12 @@
-import { useAssigned } from "../../../services/quiz/useAssigned";
-import { QuizListSection, QuizListStyled, QuizListItem } from "./QuizList.styled";
-import { Loader } from "../../loaders/Loader";
 import { useNavigate } from "react-router-dom";
-import { sortByScore } from "../../../utils/helpers";
+import { useAssigned } from "../../../services/quiz/useAssigned";
+import { Loader } from "../../loaders/Loader";
+import { sortByScoreNull } from "../../../utils/helpers";
+import {
+  QuizListSection,
+  QuizListStyled,
+  QuizListItem
+} from "./QuizList.styled";
 
 export const QuizList = () => {
   const { data, isLoading } = useAssigned();
@@ -10,11 +14,11 @@ export const QuizList = () => {
 
   const navHandler = (id, score) => {
     if (!score) {
-      navigate(`/quiz/${id}`)
+      navigate(`/quiz/${id}`);
     }
-  }
+  };
 
-  const sorted = sortByScore(data);
+  const sorted = sortByScoreNull(data);
 
   return (
     <QuizListSection>

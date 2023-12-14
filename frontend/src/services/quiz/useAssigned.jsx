@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query';
 import { QUERY_KEYS } from '../../constants';
+import { useQuery } from 'react-query';
 import { getAssigned } from '../../utils/axios';
 
 export const useAssigned = () => {

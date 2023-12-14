@@ -11,20 +11,10 @@ export const theme = {
       cyanDark: '#2B788B',
       cyanLight: '#C3DCE3',
       white: '#FFFFFF',
-      // green: '#2EBF4F',
     },
     grayScale: {
       gray50: '#858FA6',
-      // gray40: '#9EA5B8',
-      // gray30: '#B6BCC9',
       gray20: '#CED2DB',
-      // gray5: '#FAFAFC',
-    },
-    complementary: {
-      // background-color: '#F6F5F4'
-      // green: '#28A745',
-      // blue: ' #0284D0',
-      // red: '#EB5757'
     },
     semantic: {
       message: '#4070F4',

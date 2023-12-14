@@ -1,11 +1,11 @@
 import styled from "styled-components";
+import bgiUrl from "../../assets/thumbs/logo.svg";
 
 export const LogoStyled = styled.div`
-  width: 48px;
-  height: 48px;
-  fill: ${({ theme }) => theme.colors.brand.cyanDark};
-  /* svg {
-    width: 100%;
-    height: 100%;
-  } */
+  width: ${({ $size }) => $size ? $size : '100px'};
+  height: ${({ $size }) => $size ? $size : '100px'};
+  background-image: url(${bgiUrl});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 `;

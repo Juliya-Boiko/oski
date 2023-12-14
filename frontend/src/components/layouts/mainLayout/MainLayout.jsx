@@ -1,8 +1,8 @@
-import { Dashboard } from "../../sections/dashboard/Dashboard";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { MainLayoutStyled, MainLayoutMain } from "./MainLayout.styled";
 import { Header } from "../../sections/header/Header";
+import { Dashboard } from "../../sections/dashboard/Dashboard";
+import { MainLayoutStyled, MainLayoutMain } from "./MainLayout.styled";
 
 const MainLayout = () => {
   return (

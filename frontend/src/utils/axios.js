@@ -1,15 +1,14 @@
 import axios from 'axios';
 import { API_KEYS } from '../constants';
 import { getUserInfo } from './storage';
+
 export const axiosInstance = axios.create({
   baseURL: API_KEYS.BASE_URL
 });
 
 export const signUser = async (values) => {
-  // console.log(values);
   try {
     const { data } = await axiosInstance.post(`${API_KEYS.SIGN}`, values);
-    console.log(data.data);
     return data;
   } catch (error) {
     console.log(error);
@@ -25,7 +24,6 @@ export const getUser = async (user) => {
         Authorization: `Bearer ${user.token}`
       }
     });
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -40,7 +38,6 @@ export const logoutUser = async () => {
         Authorization: `Bearer ${user.token}`
       }
     });
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -56,7 +53,6 @@ export const getAssigned = async () => {
         Authorization: `Bearer ${user.token}`
       }
     });
-    // console.log(data);
     return data.data;
   } catch (error) {
     console.log(error);
@@ -71,7 +67,6 @@ export const getQuizById = async (id) => {
         Authorization: `Bearer ${user.token}`
       }
     });
-    // console.log(data);
     return data.data;
   } catch (error) {
     console.log(error);
@@ -81,13 +76,11 @@ export const getQuizById = async (id) => {
 export const sendResults = async (values) => {
   const user = getUserInfo();
   try {
-    // const { data } = await axiosInstance.get(`${API_KEYS.QUIZ}/${id}`, {
-    //   headers: {
-    //     Authorization: `Bearer ${user.token}`
-    //   }
-    // });
-    console.log(values);
-    // return data.data;
+    await axiosInstance.patch(`${API_KEYS.USER}`, values, {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    });
   } catch (error) {
     console.log(error);
   }
