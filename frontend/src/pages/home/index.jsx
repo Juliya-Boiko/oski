@@ -1,13 +1,10 @@
-import { useAssigned } from "../../services/quiz/useAssigned";
+import { QuizList } from "../../components/sections/quizList/QuizList";
+import { CommonPageContainer } from "../../components/containers/commonPageContainer/CommonPageContainer";
 
-const HomePage = () => {
-  const { data } = useAssigned();
-
-  console.log(data);
-  
-  return (
-    <div>home page</div>
-  );
-};
+const HomePage = () => (
+  <CommonPageContainer title="Quizzes">
+    <QuizList />
+  </CommonPageContainer>
+);
 
 export default HomePage;

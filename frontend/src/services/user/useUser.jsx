@@ -6,8 +6,11 @@ import { getUser } from '../../utils/axios';
 
 export const useUser = () => {
   const { data: user } = useQuery(
-    [QUERY_KEYS.ACCESS],
-    () => getUser(user),
+    [QUERY_KEYS.USER],
+    () => {
+      console.log('useUser income user', user);
+      getUser(user);
+    },
     {
       refetchOnMount: false,
       refetchOnWindowFocus: false,
@@ -18,7 +21,7 @@ export const useUser = () => {
 
   useEffect(() => {
     if (!user) removeUserInfo();
-    else saveUserInfo(user.token);
+    else saveUserInfo(user);
   }, [user]);
 
   return user ? user : null;

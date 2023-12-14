@@ -1,28 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/App';
-import { QueryClient, QueryClientProvider } from "react-query";
+import { queryClient } from './utils/queryClient';
+import { QueryClientProvider } from "react-query";
+import { GlobalStyles } from './theme/globalStyles';
 import { ReactQueryDevtools } from 'react-query/devtools';
-
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      keepPreviousData: false,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      cacheTime: Infinity,
-    }
-  }
-});
+import { MainRouter } from './router';
+import { ThemeProvider } from "styled-components";
+import { theme } from './theme/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <GlobalStyles />
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <MainRouter />
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

@@ -8,6 +8,6 @@ export const getUserInfo = async (req, res) => {
 
   // GENERATE RESPONSE
   res.status(200).json({
-    user,
+    data: user,
   });
 };

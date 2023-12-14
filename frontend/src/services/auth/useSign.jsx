@@ -1,17 +1,18 @@
 import { useQueryClient, useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_KEYS, QUERY_KEYS } from '../../constants';
-import { loginUser } from '../../utils/axios';
+import { signUser } from '../../utils/axios';
 
-export const useLogin = () => {
+export const useSign = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { mutate: loginMutation } = useMutation(
-    (values) => loginUser(values),
+  const { mutate: signMutation } = useMutation(
+    (values) => signUser(values),
     {
-      onSuccess: (data) => {
-        queryClient.setQueryData([QUERY_KEYS.ACCESS], data);
+      onSuccess: ({ data }) => {
+        console.log('useSign income data', data);
+        queryClient.setQueryData([QUERY_KEYS.USER], data);
         navigate(ROUTE_KEYS.HOME);
       },
       onError: (error) => {
@@ -20,5 +21,5 @@ export const useLogin = () => {
     }
   );
 
-  return loginMutation;
+  return signMutation;
 };

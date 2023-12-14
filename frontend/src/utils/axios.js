@@ -5,10 +5,11 @@ export const axiosInstance = axios.create({
   baseURL: API_KEYS.BASE_URL
 });
 
-export const loginUser = async (values) => {
+export const signUser = async (values) => {
+  // console.log(values);
   try {
-    const { data } = await axiosInstance.post(`${API_KEYS.LOGIN}`, values);
-    // console.log(data);
+    const { data } = await axiosInstance.post(`${API_KEYS.SIGN}`, values);
+    console.log(data.data);
     return data;
   } catch (error) {
     console.log(error);
@@ -16,6 +17,7 @@ export const loginUser = async (values) => {
 };
 
 export const getUser = async (user) => {
+  console.log(user);
   if (!user) return null;
   try {
     const { data } = await axiosInstance.get(`${API_KEYS.USER}`, {
@@ -23,39 +25,69 @@ export const getUser = async (user) => {
         Authorization: `Bearer ${user.token}`
       }
     });
-    // console.log(data);
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
   }
 };
 
+export const logoutUser = async () => {
+  const user = getUserInfo();
+  try {
+    const { data } = await axiosInstance.post(`${API_KEYS.LOGOUT}`, {}, {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    });
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 export const getAssigned = async () => {
-  const token = getUserInfo();
+  const user = getUserInfo();
   try {
     const { data } = await axiosInstance.get(`${API_KEYS.ASSIGNED}`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${user.token}`
       }
     });
     // console.log(data);
-    return data;
+    return data.data;
   } catch (error) {
     console.log(error);
   }
 };
 
 export const getQuizById = async (id) => {
-  const token = getUserInfo();
-  // console.log(token);
+  const user = getUserInfo();
   try {
     const { data } = await axiosInstance.get(`${API_KEYS.QUIZ}/${id}`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${user.token}`
       }
     });
     // console.log(data);
-    return data;
+    return data.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const sendResults = async (values) => {
+  const user = getUserInfo();
+  try {
+    // const { data } = await axiosInstance.get(`${API_KEYS.QUIZ}/${id}`, {
+    //   headers: {
+    //     Authorization: `Bearer ${user.token}`
+    //   }
+    // });
+    console.log(values);
+    // return data.data;
   } catch (error) {
     console.log(error);
   }

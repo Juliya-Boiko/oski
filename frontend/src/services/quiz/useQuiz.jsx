@@ -3,10 +3,11 @@ import { QUERY_KEYS } from '../../constants';
 import { getQuizById } from '../../utils/axios';
 
 export const useQuiz = (id) => {
-  const { data } = useQuery(
+  const data = useQuery(
     [QUERY_KEYS.QUIZ],
+    // () => console.log('useQuiz incoming id', id),
     async () => getQuizById(id),
-    { refetchOnWindowFocus: true, retry: 6, refetchOnMount: true }
+    { refetchOnWindowFocus: false, retry: 2, }
   );
   
   return data;
