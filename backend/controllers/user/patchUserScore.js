@@ -21,11 +21,11 @@ export const patchUserScore = async (req, res) => {
   // UPDATE USER 
   const passedQuizIdx = marks.findIndex(el => el.quizId.toString() === quizId.toString());
   marks[passedQuizIdx].score = score;
-  const updatedUser = await User.findByIdAndUpdate(userId, { marks }, { new: true });
+  User.findByIdAndUpdate(userId, { marks }, { new: true });
 
   // GENERATE RESPONSE
   res.status(201).json({
-    updatedUser
+    message: 'Updated successfully',
   });
 };
 
