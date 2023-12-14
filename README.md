@@ -11,6 +11,10 @@
 - requests: React-Query + Axios;
 - forms: Formik + Yup;
 - styles : StyledComponents;
+- adaptive (mobile first);
+
+<img src="./public/authpage.png" alt="Authorization page"/>
+<img src="./public/homepage.png" alt="Home page"/>
 
 ## 2. Backend
 
